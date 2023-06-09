@@ -1,0 +1,6 @@
+apiVersion: v2
+name: host-cluster-component
+description: Provide a probe to check member cluster healthiness
+type: application
+version: 0.1.0
+appVersion: 0.1.0

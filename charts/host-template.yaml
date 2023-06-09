@@ -1,0 +1,138 @@
+---
+# Source: host-cluster-component/templates/probe.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: member-dev-healthz
+  namespace: kube-system
+automountServiceAccountToken: false
+---
+# Source: host-cluster-component/templates/probe.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: member-dev-healthz
+  namespace: kube-system
+data:
+  ca.crt: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1ekNDQWMrZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJek1ETXlNVEF5TlRjeU5Wb1hEVE16TURNeE9EQXlOVGN5TlZvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTFppCllaekI0WkwvVXp4cE12UEFtc0JYUDNscm03KzZCQTY2QmJMVG5zS01MOGM3V3hkZGNsWGxhWGVVMUpWbkdkL2MKUmVaQ0dmZjhWSEtFZ21TdFFLbjNKVWthM3BtWmN3OHNGYmNBbExEcGI2THpRREhuS3JXN0tGSmN3SWpYaGpYUApqa3BOV1hKSVVrd3BPM0hzU3NncTdnZGtnSHYxQ2xqV2JORVZnanBwbjRWVFR0VjFFK1ZYY0M1NWg4bkF1eTdICnJoTllTUnNBdXJvRXNVT0YvY0F4SU9yWjN5aHNMOVdWZWpnMk1DdjRhdjA5V2tuTU81RENQU1pkc01reHFrOU4KVGFVcm9udFk2ZEl4WG5aUUFjSEhlYmhGVy9Mb3NkeWVRNndrVmVGbHVrVzdKRy9NRzY0RFlja0M3dGVCalZobgpqbzViK3M5Q0E0MTdKQ2ZvWVdrQ0F3RUFBYU5DTUVBd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZGTG11ejVQZzdiYUxMMkFqMlJmZVNPeXVBUG1NQTBHQ1NxR1NJYjMKRFFFQkN3VUFBNElCQVFBZjhyNm9yeEQ0MlNTMlgzWVhxSmlzdWpxMlJxajhQdjFsRGFnZ3BvY3oxVmlET1MvSApZZzNEeEx2Y0I2UVBaRDZUai9MR0pKZEdDUjRFZzBFalgxWCtKaWNzeWN5OVJyOHRiK1EyMWdjOHVwMjE4bVI2CnBKa202OHlQSE1LaiswaGVES1ZXR1hIeVJuU2VLWFNmUG1penoyS0hsMW5YcVVWcXd5OVplcFJxdWY4aTVIZloKOGhLRGkwOGViRzViRFJ0aTZCdFh3M0hCM1J6UmtVdCt6WFE4aDFjRGlmTkphemFUNTdqelhhOWhrcnAvc1VZMApuZGZQVEx0U2tpN1YzQUF0bk5reDJWdENBT2FGb2RVTE54NlFBOWlTcTVqdFp1Mk43VXZoaWM4K055V0dPSVczCmxsYmx4emw4a3NzV0NId1BQN0sxekJGYnN4T0RvZzM3cWhPWQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+  token: "ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklscFRkVTU0YldnMlJscG9WVlpJWTFSMFJHVnFNa0ZaUlZoUGVHUm1XVnA0UmxsRVpEVlhVbk50ZVRnaWZRLmV5SnBjM01pT2lKcmRXSmxjbTVsZEdWekwzTmxjblpwWTJWaFkyTnZkVzUwSWl3aWEzVmlaWEp1WlhSbGN5NXBieTl6WlhKMmFXTmxZV05qYjNWdWRDOXVZVzFsYzNCaFkyVWlPaUpyZFdKbExYTjVjM1JsYlNJc0ltdDFZbVZ5Ym1WMFpYTXVhVzh2YzJWeWRtbGpaV0ZqWTI5MWJuUXZjMlZqY21WMExtNWhiV1VpT2lKamJIVnpkR1Z5TFdobFlXeDBhSG90ZEc5clpXNHRjM0ZzYlc0aUxDSnJkV0psY201bGRHVnpMbWx2TDNObGNuWnBZMlZoWTJOdmRXNTBMM05sY25acFkyVXRZV05qYjNWdWRDNXVZVzFsSWpvaVkyeDFjM1JsY2kxb1pXRnNkR2g2SWl3aWEzVmlaWEp1WlhSbGN5NXBieTl6WlhKMmFXTmxZV05qYjNWdWRDOXpaWEoyYVdObExXRmpZMjkxYm5RdWRXbGtJam9pTWpWaU5EUXhaRGd0TkdGa015MDBOREV4TFdFd1pUVXRNelUwWlRoa01EVmtNemxrSWl3aWMzVmlJam9pYzNsemRHVnRPbk5sY25acFkyVmhZMk52ZFc1ME9tdDFZbVV0YzNsemRHVnRPbU5zZFhOMFpYSXRhR1ZoYkhSb2VpSjkuVW1FQXoxQ1BocklxR3RDSFR2WGdxbEhtaDAyN2JwRlBzLXNMUGdjQ2hRM2xFMm1HTHZVQzMwdy13X2RRTXA1Y2Nsb09xUUZWblp3T0V5dlZTQnR5NkJSS2FGVW1jeXBmWG0tLWQ2b0Q5dlBLOW5WVlViWnpGbE5Pa25XWnNSZk82UVNReGdOT0pPSkN1UXZzSDR3ak5fMUF5ZmlFZzl4NzJYYVYtOTRYUTVaS1FNSG9OU2tLU09IRjZLU21EV3BxVGNpRlJpLTcxd09DU21ibTFnTmFoNHBfdkpxTUE3bXRPandoTFlCN0ZYX3YtMVpKRnJBWE45U1FyMy1nTmZFbFItZl9BaGlUNTNDOEtYX1VzTDhGOXpzSUw3YmpkNmZvTUZLQml6Q0EtenNSeW5aenRfZnZtcFFEZTY4OGpid2RWRERIN1FQR2Y4YWhVaC14b1VmZ3hn"
+  cert.pem: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURoVENDQW0yZ0F3SUJBZ0lRTklKckxxK1ZKWXFYUTJXQ3BTK3lLekFOQmdrcWhraUc5dzBCQVFzRkFEQU4KTVFzd0NRWURWUVFERXdKallUQWVGdzB5TXpBMk1Ea3dNakkzTXpCYUZ3MHlOREEyTURnd01qSTNNekJhTUNreApKekFsQmdOVkJBTVRIbTFsYldKbGNpMWtaWFl0YUdWaGJIUm9laTVyZFdKbExYTjVjM1JsYlRDQ0FTSXdEUVlKCktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQU51aWg5YjhVd05yZHpranFqczFzVEd2cWtLRHpzODEKQmpWdDg5ZzgyOHArZVB5RmJGTXVoR3d0RisrS2pyZ3ZaaUcyWWpEdlFxOGFzLzc4Z2dEQW9pUzR1V2xEZWtIVgpkdUh1Q1Z5UmorWllwS3pkUXR6aDlFVkJkMnV1a2d3blNrUGtlWDZaRFJHRGF5VEtoQTF3bHRIRXhHNWZraTl0CjBXQlkwV3RUaHBCa0Z1THM5RUR0My84MUxUUk4zcEwzdlVldnNqZERmSTViSUJsWDE0ems0ekhZTWtSbHdMUWsKVXl6NEU4ZnZPTUdoNktxVy9MaUZLMWpPUjgzWmRsZnVQS3FCTGJ1YmtpeUR2VFdxQmo1UlNEVTM3S0FvUlJNdgpiT2l3YmRHSnF1ZXZMSnl6SENWZlZ4VG0rV05Rdkx3ekxGaHRCTEFGOVAydGIvK1R4Uy9pUkJrQ0F3RUFBYU9CCnhEQ0J3VEFPQmdOVkhROEJBZjhFQkFNQ0JhQXdIUVlEVlIwbEJCWXdGQVlJS3dZQkJRVUhBd0VHQ0NzR0FRVUYKQndNQ01Bd0dBMVVkRXdFQi93UUNNQUF3SHdZRFZSMGpCQmd3Rm9BVXl3ZXlhc3h5T3lXb1NQTTBLMmM3VUh4OApDWlV3WVFZRFZSMFJCRm93V0lJU2JXVnRZbVZ5TFdSbGRpMW9aV0ZzZEdoNmdoNXRaVzFpWlhJdFpHVjJMV2hsCllXeDBhSG91YTNWaVpTMXplWE4wWlcyQ0ltMWxiV0psY2kxa1pYWXRhR1ZoYkhSb2VpNXJkV0psTFhONWMzUmwKYlM1emRtTXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQTVRTkMyd1NsVGcyQUlqUlRlMjl6VEJaMkhFd05JMwpPd0tvZTlLd2ZNNm9nTmlSQ0FnQ296SElrN2lXQ1NwN09hOWZ6TEF3Ny8wdmE3am4zYzR3cFhmMFpzTWhvVUJYCk1WVnc5NVJuN3Z0ODBjQjJrL2VsdnUrUitIaE15ejdNdnkyeHVJYy9PY1cxd2xJUU5YcFdpUmJHVEkrODRmNE8KRWhtaGlPbE1NVjJQNU1WUFFjM1JwOEFNNzVkbEJ1UjR2YWhmNEY1R0RaSmRLeGF2YzV6V1l5U2dCZVBlUHQyUgo3YVpXeHlQNWFVam1KWlF6YzRWYXIvaGgzSW1UTmpSYjlia0hFYUM3Nm1Cbmt4L2pZRWFnV2hJMTdlTkhCUW91ClhnN2piWlNRWVlzVlZOSUpyRHloRGVFbXJVMFZhZUlPcHRHM0s2NTF0ZDRHVk9Na255VkRiRm89Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+  key.pem: "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBMjZLSDF2eFRBMnQzT1NPcU96V3hNYStxUW9QT3p6VUdOVzN6MkR6YnluNTQvSVZzClV5NkViQzBYNzRxT3VDOW1JYlppTU85Q3J4cXovdnlDQU1DaUpMaTVhVU42UWRWMjRlNEpYSkdQNWxpa3JOMUMKM09IMFJVRjNhNjZTRENkS1ErUjVmcGtORVlOckpNcUVEWENXMGNURWJsK1NMMjNSWUZqUmExT0drR1FXNHV6MApRTzNmL3pVdE5FM2VrdmU5UjYreU4wTjhqbHNnR1ZmWGpPVGpNZGd5UkdYQXRDUlRMUGdUeCs4NHdhSG9xcGI4CnVJVXJXTTVIemRsMlYrNDhxb0V0dTV1U0xJTzlOYW9HUGxGSU5UZnNvQ2hGRXk5czZMQnQwWW1xNTY4c25MTWMKSlY5WEZPYjVZMUM4dkRNc1dHMEVzQVgwL2Exdi81UEZMK0pFR1FJREFRQUJBb0lCQUhXWUd1VDNhamJ0aGdMNAozbjhmSzBVd0NaZmRYSkJDa3BWdXpsMGJrSTVsa3IrWmJEdEpMNnQvcFU0aXdIRkxKNEtyVlAxZ1RUTFZ1RU93CnpLWThmVlB0OTQrdGlqclBZUHhzWjJUQnB1c3MwTmFoRE5pWXZpR0tnTGNOMjdKWUl3SWd4UkFNUUJ2OVloTnIKdnJJM2N2alRRbHphSExuNk1WMUZrTExISU1nVFlNL1NxZEEyaGZndEhzQ1Q0NEZ1UFcrRnJTeFJ1cndhU1ZtOQpObVdiZDMxNUtLSmc3TVFYTDZQUHBqQm5kcVRpdittcW9iS0JEN2had08vMUloS25KOFBXVDFkcnVUd1A2UklrClFFbS9MYzRSRnlKd3I3YUFuand1UWswdTlza3k1MlFKcjc2VSsxd3drN3RnY01oaHdhTVpRblJFdFdHNGNIUisKSFpVZU0zVUNnWUVBNXVUdGVCQTdiVWpBTENsZUJVbmFrRmNzUnUxeHVaQ1FlZ2tXSm01Z24yQ0xDQUN0dzU5NApSaXJtMHJRanZDd2hWYmNOWFZBN1hoWUExUWZQcHIrcWRPT2RnWmZSZmpTWVlIQkdxaEVQRDhsTmlxMi9LKzMrCklVQklENkI5WVVhaGpaM2tZd0ZBWE5lNnRQVXJkekxSYUw1b1BPWGwxMW9ZcWJ5ZEVZeWxkR2NDZ1lFQTg0UXgKTnlxTFYzVkMvK2dqalpOUVBVYkJZa3pQdERKa3lFZkNLVlVUUFJzZlNlcXpDb0U1dzk1Tk5lWmQ2MEg2VWNTbwpsVWVuL3RGZlQxR0VoSVFWUmpvRDlrZndjdU15elI0ZnNHSllxSFhZaDBvM1MrSy9kazJKSk9iNjBtVE16UzJCCnh0Vk9wQlVYTXFMa2VpQW16cDZITjRGWmJTTXhMN2pPdUhWYk0zOENnWUFobTJLaEhpTzROV1diUis0aWNPeDYKSStZUzhNNmp4dEh3b1UvekNnL1FRdG9ac1JlWnFLVjErUnFkd3BDTS9CTmlDWUhOZWpjWjY3UDFUZXpBaFpkRwo2alpydlhCRm9Wd29kVThqdzlYZ1kxbUEvT2NkZXNlSmlYU3pxWlYyU2pTTGkxYkp2azNpOVpkOGJVOEZTNFZGCmJLbDVhN0QzbG1xT2tpQitoRzAwc3dLQmdRRGZxc1NWbWdNZ1VuazJtZDdGODgvWWFIdkpNU241cGV2QnRYOVYKL1dsTlQvTWVMbTlDcjgwQjVkWmZNbmVEVlRkNUVUdVMyWjBwUk4vWTk5UFM3NHFtMVRTOGFma2xYUjlWSFYwWAo0a3p5ZGtOcWlEVmdBeVcrb0pyZUJUWE9OMzJRMjBKL0FYOVk0SEpOTlNiTU1XblRqL0k4ZmhkSVVmR2tsb2R4CkQ0RzBPd0tCZ0FOSVZKTXJYcTBRNHBPZjVSWTZxRjFXbi9wYUNLK2xPaGtSemt1UnR6UEhsT1QzQmZoNVh3M3YKZ2hJWlpjUzFOZmxUa05sRUp1ZTVwR09TN2VlMFlBRmJPNEFlMVZteDVaeDNaUnpuRkJSVEt4SFJSaWxaNnZseQpueU9KNThERiswTFZ3M24xalBmSmhlVERqZ3BmTXZ5LzhyOFlsaUdrN01NRDJ0Y0VFc3FpCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg=="
+---
+# Source: host-cluster-component/templates/probe.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: member-dev-healthz
+  namespace: kube-system
+data:
+  host: "10.224.144.185"
+  port: "31212"
+  ca.pem: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lRTjRFSGc1TU16YkFHdlJDbnRUMVpVekFOQmdrcWhraUc5dzBCQVFzRkFEQU4KTVFzd0NRWURWUVFERXdKallUQWVGdzB5TXpBMk1Ea3dNakkzTXpCYUZ3MHpNekEyTURZd01qSTNNekJhTUEweApDekFKQmdOVkJBTVRBbU5oTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUE0M1RtCmpHN1ZyNmVlWFlURnIrRlNQODZXSEtZQ0s4QnFLdkhHZjJXNERKODgwQW9TbEdTd3NsaktleW0ycmdseHVETysKODBUWEVpRmtrRHJOK093YnRBK0pqZWxoQ0Q2ME1YYS84Q3R4S3RBVE9XUFVZajkybTNhSnEyaXBBenJaY3plKwpVaDJnVGVJQzZvSkJhVjEzZ1BweW9XdmM2NmhIMXphYUZIOGNaVmxMRVJteC9XSEtvUEJBV3Fia3ZTUStCdFFQCmdsWGdLa1phMkJpVWM1Z3ZydGl0dU1HaEV4TFp0YVpXNTBVdy9JcnNaNUpEMmpvMHFBUm9ZdE4zb3k1d2dPa2oKWk8yWHhyMFErVVBHWnR6ckVPZGY4ekhseCs3VjBpc1pnV3o5YklYYWRsZjlUd0QwMWlxMDJjZ3RUUlgzMStMcAplVG5VQi8wREN5OERWUEFkMlFJREFRQUJvMkV3WHpBT0JnTlZIUThCQWY4RUJBTUNBcVF3SFFZRFZSMGxCQll3CkZBWUlLd1lCQlFVSEF3RUdDQ3NHQVFVRkJ3TUNNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdIUVlEVlIwT0JCWUUKRk1zSHNtck1janNscUVqek5DdG5PMUI4ZkFtVk1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRRENZbmNPdDJ0bQpRUjZTVjltWjZ1VklENnREcTN2cHJqNm5PUjFZZ2tibXpRZStSWlZSRkJGZkUxMW0vbVdwdE1QeWtkSythVUo1Cm1WcCtiQkE1dTlDV1hXTXlONXZla2JETVFWS3BtTUUvYXltMEJkZGpjQmpJTFUvZllKcnRkU3Q1VjZkcEJ5U3oKdkVDYWdFRU5YcEEwQ1lRb1ZuM2I4L1oxNllHRmFYa3VxalVBY3MzK1lYWmZpQ0NVUzVFTUZiWmlJNkwwdEU3YQpWM0RUWmorVFEzWnAwb0FMRW1HaE9kSHprNS8vOUxxYXBYTkZjRHIvTFdVTXdqMFRQUS9TZm5ZbFlQN2h2dmgzCkhNOUVjZzEyUHRnNStlTElzS1FMbnZGcXNLNTdJcWlBbUNiaS9DSGt4cGh2bVhUYVA5dDYwRkJKd3ZrSUlNaDgKcG5obDBhdEo5QThXCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+---
+# Source: host-cluster-component/templates/probe.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: member-dev-healthz
+  namespace: kube-system
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 8080
+  selector:
+    k8s-app: member-dev-healthz
+    app: member-dev-healthz
+---
+# Source: host-cluster-component/templates/probe.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: member-dev-healthz
+  namespace: kube-system
+  labels:
+    k8s-app: member-dev-healthz
+    app: member-dev-healthz
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: member-dev-healthz
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: "8080"
+        prometheus.io/scrape: "true"
+      labels:
+        k8s-app: member-dev-healthz
+        app: member-dev-healthz
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - member-dev-healthz
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - name: probe
+        image: r.addops.soft.360.cn/common/generic-cluster-healthz:202306091023
+        args:
+        - --vklog=2
+        - --vmodule=main=4,server=4
+        - --cert-path=/etc/certs/cert.pem
+        - --key-path=/etc/certs/key.pem
+        env:
+        - name: KUBERNETES_SERVICE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: member-dev-healthz
+              key: host
+        - name: KUBERNETES_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: member-dev-healthz
+              key: port
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+        ports:
+        - name: http
+          containerPort: 8080
+        volumeMounts:
+        - name: sa
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+          subPath: ca.crt
+          readOnly: true
+        - name: sa
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount/token
+          subPath: token
+          readOnly: true
+        - name: sa
+          mountPath: /etc/certs/cert.pem
+          subPath: cert.pem
+          readOnly: true
+        - name: sa
+          mountPath: /etc/certs/key.pem
+          subPath: key.pem
+          readOnly: true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+      serviceAccountName: member-dev-healthz
+      volumes:
+      - name: sa
+        secret:
+          secretName: member-dev-healthz

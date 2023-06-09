@@ -14,6 +14,7 @@ helm template --namespace=kube-system member-cluster-rbac ./member-cluster-rbac 
 ```
 
 ```powershell
+# same thing using powershell
 helm template --namespace=kube-system member-cluster-rbac .\member-cluster-rbac | % ToString | Tee-Object template.yaml
 ```
 
@@ -24,6 +25,7 @@ helm template --namespace=kube-system --set name=member-dev-healthz host-cluster
 ```
 
 ```powershell
+# same thing using powershell
 helm template --namespace=kube-system --set name=member-dev-healthz host-cluster-component .\host-cluster-component | % ToString | Tee-Object host-template.yaml
 ```
 
